@@ -2,6 +2,8 @@ import React from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+import {sliderBadging, sliderBadag, sliderScale, sliderScales} from '../../asset-data';
+
 import {Carousel, Wrap} from './ImageSlider.styles';
 
 function ImageSlider() {
@@ -17,16 +19,16 @@ function ImageSlider() {
     return (
         <Carousel {...settings}>
             <Wrap>
-                <img src="/images/slider-badging.jpg"/>
+                <img src={sliderBadging}/>
             </Wrap>
             <Wrap>
-                <img src="/images/slider-badag.jpg"/>
+                <img src={sliderBadag}/>
             </Wrap>
             <Wrap>
-                <img src="/images/slider-scale.jpg"/>
+                <img src={sliderScale}/>
             </Wrap>
             <Wrap>
-                <img src="/images/slider-scales.jpg"/>
+                <img src={sliderScales}/>
             </Wrap>
         </Carousel>
     )

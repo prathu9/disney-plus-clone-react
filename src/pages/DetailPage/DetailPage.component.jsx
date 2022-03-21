@@ -3,6 +3,10 @@ import {useParams} from 'react-router-dom';
 
 import db from '../../firebase.utils.js';
 
+import {detailPlayIconBlack,
+        detailPlayIconWhite,
+        detailGroupIcon} from '../../asset-data';
+
 import {DetailContainer, 
   Background, 
   ImageTitle, 
@@ -44,18 +48,18 @@ function DetailPage() {
         </ImageTitle>
         <Controls>
           <PlayButton>
-            <img src="/images/Play-icon-black.png" alt="play-btn" />
+            <img src={detailPlayIconBlack} alt="play-btn" />
             <span>Play</span>
           </PlayButton>
           <TrailerButton>
-            <img src="/images/Play-icon-white.png" alt="trailer-btn" />
+            <img src={detailPlayIconWhite} alt="trailer-btn" />
             <span>Trailer</span>
           </TrailerButton>
           <AddButton>
             <span>+</span>
           </AddButton>
           <GroupWatchButton>
-            <img src="/images/group-icon.png" alt="group-icon"/>
+            <img src={detailGroupIcon} alt="group-icon"/>
           </GroupWatchButton>
         </Controls>
         <SubTitle>

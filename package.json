@@ -1,8 +1,8 @@
 {
   "name": "disney-plus-clone",
   "version": "0.1.0",
+  "homepage": "https://prathu9.github.io/disney-plus-clone-react",
   "private": true,
-  "homepage": "https://prathu9.github.io/disney-plus-clone-react/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.2",
     "@testing-library/jest-dom": "^4.2.4",
@@ -20,7 +20,7 @@
     "styled-components": "^5.3.3"
   },
   "scripts": {
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -5,10 +5,17 @@ import {useNavigate} from 'react-router-dom';
 import {auth, provider} from '../../firebase.utils';
 
 import {selectUserName, 
-  selectUserEmail, 
   selectUserPhoto,
   setUserLoginDetails,
   setSignOutState} from '../../features/user/userSlice';
+
+import {LogoImg,
+        HomeIcon, 
+        SearchIcon,
+        WatchlistIcon,
+        OriginalIcon,
+        MovieIcon,
+        SeriesIcon} from '../../asset-data';
 
 import {Nav, Logo, NavMenu, UserImg, Login, SignOut, DropDown} from './Header.styles';
 
@@ -17,7 +24,6 @@ function Header() {
   const navigate = useNavigate();
   const userName= useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
-  const userEmail = useSelector(selectUserEmail);
 
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
@@ -57,10 +63,10 @@ function Header() {
       photo: user.photoURL
     }))
   }
-
+console.log(HomeIcon)
   return (
     <Nav>
-      <Logo src="/images/logo.svg"/>
+      <Logo src={LogoImg.default}/>
       {
         !userName?
         <Login onClick={handleAuth}>Login</Login>
@@ -68,27 +74,27 @@ function Header() {
         <>
           <NavMenu>
           <a>
-            <img src="/images/home-icon.svg"/>
+          <img src={HomeIcon.default}/>
             <span>Home</span>
           </a>
           <a>
-            <img src="/images/search-icon.svg"/>
+            <img src={SearchIcon.default}/>
             <span>SEARCH</span>
           </a>
           <a>
-            <img src="/images/watchlist-icon.svg"/>
+            <img src={WatchlistIcon.default}/>
             <span>WATCHLIST</span>
           </a>
           <a>
-            <img src="/images/original-icon.svg"/>
+            <img src={OriginalIcon.default}/>
             <span>ORIGINALS</span>
           </a>
           <a>
-            <img src="/images/movie-icon.svg"/>
+            <img src={MovieIcon.default}/>
             <span>MOVIES</span>
           </a>
           <a>
-            <img src="/images/series-icon.svg"/>
+            <img src={SeriesIcon.default}/>
             <span>SERIES</span>
           </a>
           </NavMenu>
