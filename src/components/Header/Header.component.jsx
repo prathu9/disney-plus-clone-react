@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useCallback} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useNavigate} from 'react-router-dom';
 
@@ -25,15 +25,6 @@ function Header() {
   const userName= useSelector(selectUserName);
   const userPhoto = useSelector(selectUserPhoto);
 
-  useEffect(() => {
-    auth.onAuthStateChanged(async (user) => {
-      if(user){
-        setUser(user);
-        navigate('/home');
-      }
-    });
-  }, [userName])
-
   const handleAuth = () => {
     if(!userName){
       auth.signInWithPopup(provider)
@@ -56,14 +47,24 @@ function Header() {
     }
   }
 
-  const setUser = (user) => {
+  const setUser = useCallback((user) => {console.log("hello")
     dispatch(setUserLoginDetails({
       name: user.displayName,
       email: user.email,
       photo: user.photoURL
     }))
-  }
-console.log(HomeIcon)
+  }, [dispatch])
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if(user){
+        setUser(user);
+        navigate('/home');
+      }
+    });
+    return () => {console.log('unmounted')}
+  }, [navigate, setUser])
+
   return (
     <Nav>
       <Logo src={LogoImg.default}/>
@@ -73,30 +74,30 @@ console.log(HomeIcon)
         :
         <>
           <NavMenu>
-          <a>
-          <img src={HomeIcon.default}/>
+          <span>
+          <img src={HomeIcon.default} alt="home icon"/>
             <span>Home</span>
-          </a>
-          <a>
-            <img src={SearchIcon.default}/>
+          </span>
+          <span>
+            <img src={SearchIcon.default} alt="search icon"/>
             <span>SEARCH</span>
-          </a>
-          <a>
-            <img src={WatchlistIcon.default}/>
+          </span>
+          <span>
+            <img src={WatchlistIcon.default} alt="watch icon"/>
             <span>WATCHLIST</span>
-          </a>
-          <a>
-            <img src={OriginalIcon.default}/>
+          </span>
+          <span>
+            <img src={OriginalIcon.default} alt="original icon"/>
             <span>ORIGINALS</span>
-          </a>
-          <a>
-            <img src={MovieIcon.default}/>
+          </span>
+          <span>
+            <img src={MovieIcon.default} alt="movie icon"/>
             <span>MOVIES</span>
-          </a>
-          <a>
-            <img src={SeriesIcon.default}/>
+          </span>
+          <span>
+            <img src={SeriesIcon.default} alt="series icon"/>
             <span>SERIES</span>
-          </a>
+          </span>
           </NavMenu>
           <SignOut>
             <UserImg src={userPhoto} alt={userName}/>

@@ -18,15 +18,16 @@ import {Container} from './HomePage.styles';
 function HomePage() {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-
-  let recommends = [];
-  let newDisneyPlus = [];
-  let originals = [];
-  let trending = [];  
+ 
 
   useEffect(() => {
+    let recommends = [];
+    let newDisneyPlus = [];
+    let originals = [];
+    let trending = [];
+
     db.collection('movies').onSnapshot((snapshot) => {
-      snapshot.docs.map((doc) => {
+      snapshot.docs.forEach((doc) => {
         switch(doc.data().type){
           case 'recommend':
             recommends = [...recommends, {id: doc.id, ...doc.data()}];
@@ -39,6 +40,8 @@ function HomePage() {
             break;
           case 'trending': 
             trending = [...trending, {id: doc.id, ...doc.data()}];
+            break;
+          default:;
         }
       })
       dispatch(setMovies({
@@ -48,7 +51,7 @@ function HomePage() {
         trending: trending 
       }))
     })
-  }, [userName])
+  }, [userName, dispatch])
 
   return (
     <Container>

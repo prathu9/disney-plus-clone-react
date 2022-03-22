@@ -41,10 +41,10 @@ function DetailPage() {
   return (
     <DetailContainer>
         <Background>
-            <img src={movieDetail.backgroundImg}/>
+            <img src={movieDetail.backgroundImg} alt="background"/>
         </Background>
         <ImageTitle>
-            <img src={movieDetail.titleImg}/>
+            <img src={movieDetail.titleImg} alt="title"/>
         </ImageTitle>
         <Controls>
           <PlayButton>

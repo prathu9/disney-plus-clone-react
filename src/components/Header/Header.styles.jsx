@@ -22,7 +22,7 @@ export const NavMenu = styled.div`
     flex:1;
     margin-left: 25px;
     align-items: center;
-    a{
+    > span{
         display:flex;
         align-items:center;
         padding: 0 12px;
@@ -32,7 +32,7 @@ export const NavMenu = styled.div`
             height:20px;
         }
 
-        span{
+        > span{
             font-size:13px;
             letter-spacing:1.42px;
             position:relative;
