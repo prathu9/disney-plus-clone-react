@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import loginBackground from '../../asset/images/login-background.jpg';
+
 export const LoginPageContainer = styled.div`
     position:relative;
     height: calc(100vh - 70px);
@@ -14,7 +16,7 @@ export const LoginPageContainer = styled.div`
         left:0;
         right:0;
         bottom:0;
-        background-image:url('/images/login-background.jpg');
+        background-image:url(${loginBackground});
         background-repeat:no-repeat;
         background-size: cover;
         background-position: top;
