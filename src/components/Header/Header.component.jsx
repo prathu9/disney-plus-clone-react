@@ -88,7 +88,7 @@ function Header() {
           </span>
           <span>
             <img src={OriginalIcon.default} alt="original icon"/>
-            <span>ORIGINAL</span>
+            <span>ORIGINALS</span>
           </span>
           <span>
             <img src={MovieIcon.default} alt="movie icon"/>
